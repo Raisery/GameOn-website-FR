@@ -7,21 +7,24 @@ function editNav() {
   }
 }
 
-//object to stock data of form
+//object to stock data from form
 class Inscription {
 
-  constructor(first, last, email, birthdate, quantity, location) {
+  constructor(first, last, email, birthdate, quantity, location, conditionAccepted, wantBeContacted) {
     this.first = first;
     this.last = last;
     this.email = email;
     this.birthdate = birthdate;
     this.quantity = quantity;
     this.location = location;
-    this.conditionAccepted = true;
+    this.conditionAccepted = conditionAccepted;
+    this.wantBeContacted = wantBeContacted;
     this.validate = [false, false, false, false, false, false];
+
+    this.generateValidate();
   }
 
-  verification() {
+  generateValidate() {
     this.validate = [false, false, false, false, false, false];
 
     //test first name
@@ -68,8 +71,24 @@ class Inscription {
     console.log(this.validate[3]," : ",this.birthdate);
     console.log(this.validate[4]," : ",this.quantity);
     console.log(this.validate[5]," : ",this.location);
+    console.log(this.conditionAccepted, " : Conditions d'utilisation");
+    console.log(this.wantBeContacted, " : Etre contacté");
 
     
+  }
+
+  //return true if the form is valid else it return false
+  isValid() {
+    var result = this.validate.find(element => element == false);
+    if(result === undefined) {
+      result = true;
+    }
+
+    if(!this.conditionAccepted) {
+      result = false;
+    }
+
+    return result;
   }
 }
 
@@ -108,22 +127,34 @@ function closeModal() {
 function testFormValidity() {
   
   var dataForm = document.querySelectorAll(".text-control");
-  var checkBoxs = document.querySelectorAll("input[type = 'radio']");
+  var radioBtn = document.querySelectorAll("input[type = 'radio']");
+  var checkBoxs = document.querySelectorAll("input[type = 'checkbox']");
   var location = null;
-  checkBoxs.forEach((loc) => {
+
+  radioBtn.forEach((loc) => {
     
     if(loc.checked) {
-      console.log("V ",loc.value);
       location = loc.value;
     }
-    else {
-      console.log("X ",loc.value);
-    }
+   
   })
-  var inscription = new Inscription(dataForm[0].value,dataForm[1].value,dataForm[2].value,dataForm[3].value,dataForm[4].value,location);
-
-
-  inscription.verification();
+  var inscription = new Inscription(
+    dataForm[0].value,
+    dataForm[1].value,
+    dataForm[2].value,
+    dataForm[3].value,
+    dataForm[4].value,
+    location,
+    checkBoxs[0].checked,
+    checkBoxs[1].checked);
+  
+  if(inscription.isValid()) {
+    console.log("Le formulaire est valide !");
+  }
+  else {
+    console.log("Le formulaire n'est pas valide !")
+  }
+  
   
 }
 
