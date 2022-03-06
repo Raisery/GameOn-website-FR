@@ -90,6 +90,30 @@ class Inscription {
 
     return result;
   }
+
+  showErrors() {
+    
+    console.log("liste des erreurs possibles", errorMsg);
+    let i = 0;
+    this.validate.forEach((test) => {
+      if(!test) {
+        errorMsg[i].style.display = "block";
+        console.log("Erreur numéro : ", i);
+      }
+
+      else {
+        errorMsg[i].style.display = "none";
+      }
+      i++;
+    });
+
+    if(!this.conditionAccepted) {
+      errorMsg[i].style.display = "block";
+    }
+    else {
+      errorMsg[i].style.display = "none";
+    }
+  }
 }
 
 // DOM Elements
@@ -98,6 +122,7 @@ const modalClose = document.querySelectorAll(".close");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
+const errorMsg = document.querySelectorAll(".error-msg");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -107,10 +132,7 @@ modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // submit button event
 submitBtn.addEventListener("click", function(event) {
-  event.stopPropagation();
-  event.preventDefault();
-
-  testFormValidity();
+    testFormValidity(event);
 });
 
 // launch modal form
@@ -124,7 +146,7 @@ function closeModal() {
 }
 
 //verification of form
-function testFormValidity() {
+function testFormValidity(event) {
   
   var dataForm = document.querySelectorAll(".text-control");
   var radioBtn = document.querySelectorAll("input[type = 'radio']");
@@ -150,11 +172,19 @@ function testFormValidity() {
   
   if(inscription.isValid()) {
     console.log("Le formulaire est valide !");
+
   }
   else {
     console.log("Le formulaire n'est pas valide !")
+    event.stopPropagation();
+    event.preventDefault();
+    inscription.showErrors();
   }
   
   
 }
 
+
+function validate() {
+  
+}
