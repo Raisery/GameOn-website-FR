@@ -117,12 +117,13 @@ class Inscription {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalClose = document.querySelectorAll(".close");
+const modalbg = document.querySelector(".form-window");
+const modalClose = document.querySelectorAll(".close-btn");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const errorMsg = document.querySelectorAll(".error-msg");
+const modalValidate = document.querySelector(".validate");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -143,6 +144,7 @@ function launchModal() {
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  modalValidate.style.display = "none";
 }
 
 //verification of form
@@ -172,19 +174,20 @@ function testFormValidity(event) {
   
   if(inscription.isValid()) {
     console.log("Le formulaire est valide !");
-
+    modalbg.style.display= 'none';
+    modalValidate.style.display="block";
   }
   else {
     console.log("Le formulaire n'est pas valide !")
-    event.stopPropagation();
-    event.preventDefault();
+    
     inscription.showErrors();
   }
-  
+  event.stopPropagation();
+  event.preventDefault();
   
 }
 
 
 function validate() {
-  
+  console.log("données envoyées !");
 }

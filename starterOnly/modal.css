@@ -196,6 +196,14 @@ main {
   margin: 15px auto;
 }
 
+.merci {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+  text-align: center;
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
