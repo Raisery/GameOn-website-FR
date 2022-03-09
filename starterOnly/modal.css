@@ -105,12 +105,10 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
 main {
-  font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
@@ -140,8 +138,6 @@ main {
 }
 
 .footer {
-  margin: 20px;
-  padding: 10px;
   font-family: var(--font-slab);
 }
 
@@ -201,6 +197,7 @@ main {
   align-items: center;
   justify-content: center;
   height: 600px;
+  font-size: 36px;
   text-align: center;
 }
 
@@ -491,18 +488,36 @@ input[data-error]::after {
   color: #fe142f;
   padding: 0;
   font-size: 1rem;
-  margin: 60px 0 30px;
+  margin-top: 26px;
   font-weight: bolder;
-}
-.hero-section > .btn-signup {
-  display: none;
 }
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+.btn-responsive {
+  display: none;
+}
 @media screen and (max-width: 800px) {
+  .header-logo {
+    scale: 0.5;
+    margin: 0;
+    padding: 0;
+    margin-left: -55px;
+  }
+  .topnav a{
+    font-weight: 100;
+    color: #FF001B;
+  }
+  .icon i{
+    scale: 1.5;
+  }
+  .topnav a:hover {
+    color: white;
+  }
+  
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -511,6 +526,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    margin-top: -20px;
   }
   .hero-content::after {
     content: unset;
@@ -518,26 +534,53 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
+
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 40px;
+    margin-left: -20px;
+    font-weight: 500;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 13px;
+    margin-right: 60px;
+    margin-top: 17px;
+    margin-left: -20px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin: auto;
   }
   .copyrights {
-    margin-top: 50px;
     text-align: center;
+    font-size: 10px;
+    height: auto;
+  }
+  .footer {
+    display: block;
+    max-height: 30px;
+  }
+  .btn-responsive {
+    display: block;
+    margin: auto;
+    margin-bottom: 0;
+    margin-top: 25px;
+    height: 31px;
+    width: 141px;
+    font-size: 14px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .modal-body {
+    margin: 0;
+  }
+
+  .bground {
+    bottom: -45px;
+    top: auto;
+    background-color:transparent;
   }
 }
 
