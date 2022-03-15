@@ -66,16 +66,6 @@ class Inscription {
       this.validate[5] = true;
     }
 
-    //logs
-    console.log(this.validate[0]," : ",this.first);
-    console.log(this.validate[1]," : ",this.last);
-    console.log(this.validate[2]," : ",this.email);
-    console.log(this.validate[3]," : ",this.birthdate);
-    console.log(this.validate[4]," : ",this.quantity);
-    console.log(this.validate[5]," : ",this.location);
-    console.log(this.conditionAccepted, " : Conditions d'utilisation");
-    console.log(this.wantBeContacted, " : Etre contacté");
-
     
   }
 
@@ -93,14 +83,13 @@ class Inscription {
     return result;
   }
 
+  //shows form validation errors 
   showErrors() {
     
-    console.log("liste des erreurs possibles", errorMsg);
     let i = 0;
     this.validate.forEach((test) => {
       if(!test) {
         errorMsg[i].style.display = "block";
-        console.log("Erreur numéro : ", i);
       }
 
       else {
@@ -150,7 +139,7 @@ function closeModal() {
   modalValidate.style.display = "none";
 }
 
-//verification of form
+//form verification
 function testFormValidity(event) {
   
   var dataForm = document.querySelectorAll(".text-control");
@@ -176,13 +165,11 @@ function testFormValidity(event) {
     checkBoxs[1].checked);
   
   if(inscription.isValid()) {
-    console.log("Le formulaire est valide !");
     modalbg.style.display= 'none';
     modalValidate.style.display="block";
     formReset.reset();
   }
   else {
-    console.log("Le formulaire n'est pas valide !")
     
     inscription.showErrors();
   }
