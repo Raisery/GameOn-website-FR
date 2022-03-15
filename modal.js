@@ -126,6 +126,7 @@ const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const errorMsg = document.querySelectorAll(".error-msg");
 const modalValidate = document.querySelector(".validate");
+const formReset = document.querySelector("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -178,6 +179,7 @@ function testFormValidity(event) {
     console.log("Le formulaire est valide !");
     modalbg.style.display= 'none';
     modalValidate.style.display="block";
+    formReset.reset();
   }
   else {
     console.log("Le formulaire n'est pas valide !")
@@ -190,6 +192,3 @@ function testFormValidity(event) {
 }
 
 
-function validate() {
-  console.log("données envoyées !");
-}
