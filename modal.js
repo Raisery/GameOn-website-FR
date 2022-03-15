@@ -27,13 +27,15 @@ class Inscription {
   generateValidate() {
     this.validate = [false, false, false, false, false, false];
 
+    var nameRegex = /^[a-zA-Z]+$/g;
+
     //test first name
-    if(this.first != "" && this.first.length >= 2) {
+    if(this.first != "" && this.first.length >= 2 && this.first.toString().match(nameRegex) != null) {
       this.validate[0] = true;
     }
 
     //test last name
-    if(this.last != "" && this.last.length >= 2) {
+    if(this.last != "" && this.last.length >= 2 && this.last.toString().match(nameRegex) != null) {
       this.validate[1] = true;
     }
 
