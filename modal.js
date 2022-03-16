@@ -25,6 +25,7 @@ class Inscription {
   }
 
   generateValidate() {
+    // reset the array validate
     this.validate = [false, false, false, false, false, false];
 
     var nameRegex = /^[a-zA-Z]+$/g;
@@ -71,8 +72,10 @@ class Inscription {
 
   //return true if the form is valid else it return false
   isValid() {
+    // search the first false element in the array
     var result = this.validate.find(element => element == false);
     if(result === undefined) {
+      // there is only true element
       result = true;
     }
 
