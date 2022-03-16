@@ -25,8 +25,6 @@ class Inscription {
   }
 
   generateValidate() {
-    // reset the array validate
-    this.validate = [false, false, false, false, false, false];
 
     var nameRegex = /^[a-zA-Z]+$/g;
 
