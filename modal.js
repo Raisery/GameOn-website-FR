@@ -26,7 +26,7 @@ class Inscription {
 
   generateValidate() {
 
-    var nameRegex = /^[a-zA-Z]+$/g;
+    var nameRegex = /^[a-zA-Z\s\-\é\è\î\ï\ë]+$/g;
 
     //test first name
     if(this.first != "" && this.first.length >= 2 && this.first.toString().match(nameRegex) != null) {
@@ -88,8 +88,8 @@ class Inscription {
   showErrors() {
     
     let i = 0;
-    this.validate.forEach((test) => {
-      if(!test) {
+    this.validate.forEach((valid) => {
+      if(!valid) {
         errorMsg[i].style.display = "block";
       }
 
@@ -116,7 +116,7 @@ const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const errorMsg = document.querySelectorAll(".error-msg");
 const modalValidate = document.querySelector(".validate");
-const formReset = document.querySelector("form");
+const formReset = document.getElementById("form");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -170,10 +170,8 @@ function testFormValidity(event) {
     modalValidate.style.display="block";
     formReset.reset();
   }
-  else {
-    
-    inscription.showErrors();
-  }
+  inscription.showErrors();
+
   event.stopPropagation();
   event.preventDefault();
   
