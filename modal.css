@@ -53,7 +53,7 @@ img {
   font-size: 18px;
   font-weight: 500;
   font-style: normal;
-  line-height: 23,44px;
+  line-height: 24px;
 
 }
 
@@ -502,7 +502,7 @@ footer {
 }
 @media screen and (max-width: 800px) {
   .header-logo {
-    scale: 0.5;
+    transform: scale(0.5);
     margin: 0;
     padding: 0;
     margin-left: -55px;
@@ -512,7 +512,7 @@ footer {
     color: #FF001B;
   }
   .icon i{
-    scale: 1.5;
+    transform: scale(1.5);
   }
   .topnav a:hover {
     color: white;
