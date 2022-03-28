@@ -582,6 +582,10 @@ footer {
     top: auto;
     background-color:transparent;
   }
+
+  .btn-submit {
+    margin-bottom: 20px;
+  }
 }
 
 @keyframes modalopen {
